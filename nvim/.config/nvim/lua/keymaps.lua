@@ -1,14 +1,12 @@
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTreeToggle" })
 
--- Удаление без копирования (в black hole register)
 vim.keymap.set({ "n", "v" }, "d", '"_d', { desc = "Delete without yanking" })
 
--- Удаление с копированием (как обычное 'd')
 vim.keymap.set({ "n", "v" }, "z", "d", { desc = "Yank and delete" })
 
--- zz → вырезать строку (аналог dd)
 vim.keymap.set("n", "zz", "dd", { noremap = true, desc = "Cut line" })
 
+-- vim.keymap.set("Y", { desc = "yiw" })
 -- Ctrl + R → redo (в normal-режиме)
 vim.keymap.set("n", "<C-r>", "<C-r>", { desc = "Redo" })
 
@@ -73,3 +71,5 @@ vim.keymap.set({ "n", "i", "v" }, "<D-Left>", "<Home>", { desc = "Go to beginnin
 vim.keymap.set({ "n", "i", "v" }, "<D-Right>", "<End>", { desc = "Go to end of line" })
 
 vim.keymap.set({ "n", "i" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
