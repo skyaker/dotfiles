@@ -7,5 +7,6 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { "vuciv/golf" },
+  { "xiyaowong/fast-cursor-move.nvim" },
   -- import/override with your plugins folder
 }

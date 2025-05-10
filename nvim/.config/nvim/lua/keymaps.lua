@@ -73,3 +73,9 @@ vim.keymap.set({ "n", "i", "v" }, "<D-Right>", "<End>", { desc = "Go to end of l
 vim.keymap.set({ "n", "i" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+
+-- Navigation
+
+-- vim.keymap.set("n", "i", "h", { noremap = true })
+-- vim.keymap.set("n", "h", "O", { noremap = true })
+-- vim.keymap.set("i", "h", "<Esc>O", { noremap = true })
