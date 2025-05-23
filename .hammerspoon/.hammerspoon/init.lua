@@ -161,6 +161,17 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Return", function()
 	end)
 end)
 
+hs.hotkey.bind({ "ctrl", "alt" }, "v", function()
+	moveWindowToPosition(function(screen, gap)
+		return hs.geometry.rect(
+			screen.x + 11 * gap,
+			screen.y + 5 * TOP_GAP,
+			screen.w - 22 * gap,
+			screen.h - 11 * TOP_GAP
+		)
+	end)
+end)
+
 -- ------------------------------------------------------------ARROWS------------------------------------------------------------
 
 -- DONE

@@ -1,4 +1,7 @@
+# fastfetch --logo ~/.config/fastfetch/pxArt_1.png
+
 # ----------------------------------------Interface and plugins----------------------------------------
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -45,5 +48,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-# fastfetch --logo ~/.config/fastfetch/lain.jpg --logo-width 20 --logo-height 10
-fastfetch --logo ~/.config/fastfetch/lain.txt
+# fastfetch --kitty-direct ~/.config/fastfetch/lain.jpg --logo-width 20 --logo-height 10
+# fastfetch --logo ~/.config/fastfetch/lain.txt
+fastfetch --logo-type small --pipe false
