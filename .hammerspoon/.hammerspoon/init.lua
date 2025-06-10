@@ -1,7 +1,8 @@
-local GAP_BETWEEN_WINDOWS = 18
--- local GAP_BETWEEN_WINDOWS = 0
+-- local GAP_BETWEEN_WINDOWS = 18
+local GAP_BETWEEN_WINDOWS = 0
 local SKETCHYBAR_HEIGHT = 0
-local TOP_GAP = 10
+-- local TOP_GAP = 10
+local TOP_GAP = 0
 -- local TOP_GAP = 30
 
 local FAST_STEPS = 50
@@ -107,12 +108,12 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Right", function()
 						newFrame.h - TOP_GAP
 					)
 				)
-			or hs.geometry.rect(
-				newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
-				newFrame.y + gap,
-				(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
-				newFrame.h - TOP_GAP
-			)
+				or hs.geometry.rect(
+					newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
+					newFrame.y + gap,
+					(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
+					newFrame.h - TOP_GAP
+				)
 
 		return targetFrame
 	end)
@@ -145,12 +146,12 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Left", function()
 					newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
 				)
 			)
-		or hs.geometry.rect(
-			newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
-			newFrame.y + TOP_GAP,
-			(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
-			newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
-		)
+			or hs.geometry.rect(
+				newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
+				newFrame.y + TOP_GAP,
+				(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
+				newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
+			)
 
 	moveWindow(win, targetFrame)
 end)
