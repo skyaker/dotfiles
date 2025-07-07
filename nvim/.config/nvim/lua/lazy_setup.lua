@@ -42,11 +42,17 @@ require("lazy").setup({
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
   },
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --     config = function()
+  --       require("supermaven-nvim").setup({})
+  --     end,
+  -- },
   { import = "community" },
   { import = "plugins" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  install = { colorscheme = { "tribela/vim-transparent", "rose-pine/neovim" } },
+  install = { colorscheme = { "tokyonight-moon" } },
   ui = { backdrop = 100 },
   performance = {
     rtp = {

@@ -36,8 +36,8 @@ return {
         },
 
         filters = {
-          dotfiles = false, -- 👈 показывать dotfiles
-          git_ignored = false, -- 👈 не скрывать .gitignored
+          dotfiles = false,
+          git_ignored = false,
         },
 
         git = {

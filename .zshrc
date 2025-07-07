@@ -50,4 +50,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 # fastfetch --kitty-direct ~/.config/fastfetch/lain.jpg --logo-width 20 --logo-height 10
 # fastfetch --logo ~/.config/fastfetch/lain.txt
-fastfetch --logo-type small --pipe false
+# fastfetch --logo-type small --pipe false
