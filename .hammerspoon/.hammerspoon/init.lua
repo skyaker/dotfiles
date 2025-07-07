@@ -108,12 +108,12 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Right", function()
 						newFrame.h - TOP_GAP
 					)
 				)
-				or hs.geometry.rect(
-					newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
-					newFrame.y + gap,
-					(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
-					newFrame.h - TOP_GAP
-				)
+			or hs.geometry.rect(
+				newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
+				newFrame.y + gap,
+				(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
+				newFrame.h - TOP_GAP
+			)
 
 		return targetFrame
 	end)
@@ -146,12 +146,12 @@ hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Left", function()
 					newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
 				)
 			)
-			or hs.geometry.rect(
-				newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
-				newFrame.y + TOP_GAP,
-				(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
-				newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
-			)
+		or hs.geometry.rect(
+			newFrame.x + newFrame.w / 2 + GAP_BETWEEN_WINDOWS,
+			newFrame.y + TOP_GAP,
+			(newFrame.w - 2 * TOP_GAP - GAP_BETWEEN_WINDOWS) / 2,
+			newFrame.h - TOP_GAP - GAP_BETWEEN_WINDOWS
+		)
 
 	moveWindow(win, targetFrame)
 end)
@@ -165,10 +165,10 @@ end)
 hs.hotkey.bind({ "ctrl", "alt" }, "v", function()
 	moveWindowToPosition(function(screen, gap)
 		return hs.geometry.rect(
-			screen.x + 11 * gap,
-			screen.y + 5 * TOP_GAP,
-			screen.w - 22 * gap,
-			screen.h - 11 * TOP_GAP
+			screen.x + 1 / 6 * screen.w,
+			screen.y + 1 / 8 * screen.h,
+			screen.w - 2 / 6 * screen.w,
+			screen.h - 1 / 8 * screen.w
 		)
 	end)
 end)
@@ -378,4 +378,28 @@ function powerStatusChanged()
 	end
 end
 
--- ---------------------------------------------------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------APP NAVIGATION------------------------------------------------------------
+
+hs.hotkey.bind({ "ctrl" }, "T", function()
+	hs.application.launchOrFocus("Telegram")
+end)
+
+function launch(appName)
+	hs.application.launchOrFocus(appName)
+end
+
+hs.hotkey.bind({ "ctrl" }, "M", function()
+	launch("ym")
+end)
+
+hs.hotkey.bind({ "ctrl" }, "K", function()
+	launch("kitty")
+end)
+
+hs.hotkey.bind({ "ctrl" }, "V", function()
+	launch("nekoray_arm64")
+end)
+
+hs.hotkey.bind({ "ctrl" }, "B", function()
+	launch("Firefox")
+end)
