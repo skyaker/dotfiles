@@ -1,11 +1,11 @@
--- local GAP_BETWEEN_WINDOWS = 18
+-- local GAP_BETWEEN_WINDOWS = 10
 local GAP_BETWEEN_WINDOWS = 0
 local SKETCHYBAR_HEIGHT = 0
 -- local TOP_GAP = 10
 local TOP_GAP = 0
 -- local TOP_GAP = 30
 
-local FAST_STEPS = 50
+local FAST_STEPS = 0
 local FAST_DELAY = 0.001
 local screens = hs.screen.allScreens()
 local screenCount = #screens
@@ -400,6 +400,18 @@ hs.hotkey.bind({ "ctrl" }, "V", function()
 	launch("nekoray_arm64")
 end)
 
-hs.hotkey.bind({ "ctrl" }, "B", function()
+hs.hotkey.bind({ "ctrl" }, "F", function()
 	launch("Firefox")
 end)
+
+-- hs.hotkey.bind({ "ctrl" }, "Z", function()
+-- 	launch("Zen")
+-- end)
+
+hs.hotkey.bind({ "ctrl" }, "O", function()
+	launch("Obsidian")
+end)
+
+-- hs.hotkey.bind({ "ctrl" }, "R", function()
+-- 	launch("Redis Insight")
+-- end)

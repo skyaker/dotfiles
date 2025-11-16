@@ -29,6 +29,10 @@ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export CC=/opt/homebrew/opt/llvm/bin/clang
 export CXX=/opt/homebrew/opt/llvm/bin/clang++
+
+export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 export LPAND=~/latexpand/latexpand
 alias latexpand="perl ~/latexpand/latexpand"
 
@@ -51,3 +55,19 @@ unset __conda_setup
 # fastfetch --kitty-direct ~/.config/fastfetch/lain.jpg --logo-width 20 --logo-height 10
 # fastfetch --logo ~/.config/fastfetch/lain.txt
 # fastfetch --logo-type small --pipe false
+
+# ----------------------------------------------Tmux----------------------------------------------
+
+# tat: tmux attach
+function tat {
+  name=$(basename `pwd` | sed -e 's/\.//g')
+
+  if tmux ls 2>&1 | grep "$name"; then
+    tmux attach -t "$name"
+  elif [ -f .envrc ]; then
+    direnv exec / tmux new-session -s "$name"
+  else
+    tmux new-session -s "$name"
+  fi
+}
+export PATH="$PATH:$(go env GOPATH)/bin"

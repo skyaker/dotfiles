@@ -66,9 +66,11 @@ vim.keymap.set("n", "<leader>9", "<cmd>BufferGoto 9<CR>", { desc = "Buffer 9" })
 
 -- В начало строки
 vim.keymap.set({ "n", "i", "v" }, "<D-Left>", "<Home>", { desc = "Go to beginning of line" })
+vim.keymap.set({ "n", "i", "v" }, "<C-D-h>", "<Home>", { desc = "Go to beginning of line" })
 
 -- В конец строки
 vim.keymap.set({ "n", "i", "v" }, "<D-Right>", "<End>", { desc = "Go to end of line" })
+vim.keymap.set({ "n", "i", "v" }, "<C-D-l>", "<End>", { desc = "Go to end of line" })
 
 vim.keymap.set({ "n", "i" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 
@@ -79,3 +81,10 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 -- vim.keymap.set("n", "i", "h", { noremap = true })
 -- vim.keymap.set("n", "h", "O", { noremap = true })
 -- vim.keymap.set("i", "h", "<Esc>O", { noremap = true })
+
+vim.keymap.set("i", "<D-x>", function()
+  local suggestion = require "supermaven-nvim.completion_preview"
+  if suggestion and suggestion.has_suggestion and suggestion.on_clear_suggestion then
+    suggestion.on_clear_suggestion()
+  end
+end, { desc = "Supermaven: отклонить предложение" })

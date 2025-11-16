@@ -33,7 +33,11 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function() require("go").setup() end,
+    config = function()
+      require("go").setup {
+        fmt_handler = "gofumpt",
+      }
+    end,
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
@@ -41,6 +45,18 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
+  },
+  {
+    "basola21/PDFview",
+    lazy = false,
+    dependencies = { "nvim-telescope/telescope.nvim" },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+
+    -- Completion for `blink.cmp`
+    -- dependencies = { "saghen/blink.cmp" },
   },
   -- {
   --   "supermaven-inc/supermaven-nvim",
@@ -52,7 +68,7 @@ require("lazy").setup({
   { import = "plugins" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
-  install = { colorscheme = { "tokyonight-moon" } },
+  install = { colorscheme = { "kanagawa" } },
   ui = { backdrop = 100 },
   performance = {
     rtp = {

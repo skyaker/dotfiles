@@ -1,13 +1,12 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 return {
   "supermaven-inc/supermaven-nvim",
   event = "InsertEnter",
   cmd = { "SupermavenUseFree", "SupermavenUsePro" },
   opts = {
     keymaps = {
-      accept_suggestion = "<S-Tab>", -- handled by completion engine
+      clear_suggestion = "<D-x>",
     },
+    -- disable_keymaps = true,
   },
   specs = {
     {
