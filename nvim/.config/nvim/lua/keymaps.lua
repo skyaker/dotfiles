@@ -16,6 +16,12 @@ vim.keymap.set({ "i", "n" }, "<D-z>", function() vim.cmd "undo" end, { desc = "U
 -- Cmd + Shift + Z → redo
 vim.keymap.set({ "i", "n" }, "<D-Z>", function() vim.cmd "redo" end, { desc = "Redo (Cmd+Shift+Z)" })
 
+vim.keymap.set("v", "v", '"_dP', {
+  noremap = true,
+  silent = true,
+  desc = "Paste over selection without changing buffer",
+})
+
 -- vim.keymap.set("n", "<Space>", "<Cmd>WhichKey '<Space>'<CR>", { silent = true, noremap = true })
 
 v = {
