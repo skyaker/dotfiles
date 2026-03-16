@@ -15,11 +15,11 @@ get_tmux_option() {
 }
 
 # colors
-bg=$(get_tmux_option "@tmux-dotbar-bg" '#0B0E14')
-fg=$(get_tmux_option "@tmux-dotbar-fg" '#475266')
-fg_current=$(get_tmux_option "@tmux-dotbar-fg-current" '#BFBDB6')
-fg_session=$(get_tmux_option "@tmux-dotbar-fg-session" '#565B66')
-fg_prefix=$(get_tmux_option "@tmux-dotbar-fg-prefix" '#95E6CB')
+bg=$(get_tmux_option "@tmux-dotbar-bg" 'default')
+fg=$(get_tmux_option "@tmux-dotbar-fg" 'default')
+fg_current=$(get_tmux_option "@tmux-dotbar-fg-current" 'default')
+fg_session=$(get_tmux_option "@tmux-dotbar-fg-session" 'default')
+fg_prefix=$(get_tmux_option "@tmux-dotbar-fg-prefix" 'default')
 
 # bold options
 bold_status=$(get_tmux_option "@tmux-dotbar-bold-status" false)
