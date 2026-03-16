@@ -401,7 +401,8 @@ hs.hotkey.bind({ "ctrl" }, "V", function()
 end)
 
 hs.hotkey.bind({ "ctrl" }, "F", function()
-	launch("Firefox")
+	-- launch("Firefox")
+	launch("LibreWolf")
 end)
 
 -- hs.hotkey.bind({ "ctrl" }, "Z", function()
@@ -410,6 +411,10 @@ end)
 
 hs.hotkey.bind({ "ctrl" }, "O", function()
 	launch("Obsidian")
+end)
+
+hs.hotkey.bind({ "ctrl" }, "P", function()
+	launch("IINA")
 end)
 
 -- hs.hotkey.bind({ "ctrl" }, "R", function()
