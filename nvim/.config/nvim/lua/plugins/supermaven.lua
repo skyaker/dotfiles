@@ -1,30 +1,14 @@
 return {
   "supermaven-inc/supermaven-nvim",
-  event = "InsertEnter",
-  cmd = { "SupermavenUseFree", "SupermavenUsePro" },
-  opts = {
-    keymaps = {
-      clear_suggestion = "<D-x>",
-    },
-    -- disable_keymaps = true,
-  },
-  specs = {
-    {
-      "AstroNvim/astrocore",
-      opts = {
-        options = {
-          g = {
-            -- set the ai_accept function
-            ai_accept = function()
-              local suggestion = require "supermaven-nvim.completion_preview"
-              if suggestion.has_suggestion() then
-                vim.schedule(function() suggestion.on_accept_suggestion() end)
-                return true
-              end
-            end,
-          },
-        },
+  config = function()
+    require("supermaven-nvim").setup {
+      keymaps = {
+        accept_suggestion = "D-y",
+        clear_suggestion = "D-]",
+        accept_word = "<D-j>",
       },
-    },
-  },
+      -- disable_keymaps = true,
+    }
+  end,
+  -- config = function() require("supermaven-nvim").setup() end,
 }

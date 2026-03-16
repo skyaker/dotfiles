@@ -8,107 +8,133 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
-      autopairs = true, -- enable autopairs at start
-      cmp = true, -- enable completion at start
-      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
-      highlighturl = true, -- highlight URLs at start
-      notifications = true, -- enable notifications at start
+      large_buf = { size = 1024 * 256, lines = 10000 },
+      autopairs = true,
+      cmp = true,
+      diagnostics = { virtual_text = true, virtual_lines = false },
+      highlighturl = true,
+      notifications = true,
     },
-    -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
       virtual_text = true,
       underline = true,
     },
-    -- passed to `vim.filetype.add`
     filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
+      extension = { foo = "fooscript" },
+      filename = { [".foorc"] = "fooscript" },
+      pattern = { [".*/etc/foo/.*"] = "fooscript" },
     },
-    -- vim options can be configured here
+    disabled_plugins = {
+      "neo-tree",
+    },
     options = {
-      opt = { -- vim.opt.<key>
-        relativenumber = false, -- sets vim.opt.relativenumber
-        number = true, -- sets vim.opt.number
-        spell = false, -- sets vim.opt.spell
-        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+      opt = {
+        relativenumber = false,
+        number = true,
+        spell = false,
+        signcolumn = "yes",
+        wrap = true,
+        linebreak = true,
+        showbreak = "",
+        cursorline = false,
         showtabline = 2,
+        timeoutlen = 300,
+        conceallevel = 2,
       },
-      g = { -- vim.g.<key>
-        -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
-        -- This can be found in the `lua/lazy_setup.lua` file
-        -- neo_tree_remove_legacy_commands = 1,
-        -- neo_tree_show_hidden_files = true,
+      g = {
+        ai_accept = function()
+          local suggestion = require "supermaven-nvim.completion_preview"
+          if suggestion.has_suggestion() then
+            vim.schedule(function() suggestion.on_accept_suggestion() end)
+            return true
+          end
+        end,
+        -- global variables
       },
-      -- filesystem = {
-      --   filtered_items = {
-      --     visible = true, -- 👈 показывать скрытые файлы
-      --     hide_dotfiles = false, -- 👈 НЕ скрывать файлы типа .env, .DS_Store и т.п.
-      --     hide_gitignored = false, -- (опционально)
-      --   },
-      -- },
     },
-    -- Mappings can be configured through AstroCore as well.
-    -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
-      -- first key is the mode
+      -- NORMAL MODE ---
       n = {
-        -- second key is the lefthand side of the map
+        ["<Leader>a"] = { "<Esc>ggVG", desc = "Select all" },
+        ["<D-a>"] = { "<Esc>ggVG", desc = "Select all" },
 
-        -- navigate buffer tabs
+        ["<Leader>e"] = { "<cmd>NvimTreeToggle<CR>", desc = "NvimTreeToggle" },
+
+        ["d"] = { '"_d', desc = "Delete without yanking" },
+        ["z"] = { "d", desc = "Yank and delete" },
+
+        ["<C-r>"] = { "<C-r>", desc = "Redo" },
+        ["<D-z>"] = { function() vim.cmd "undo" end, desc = "Undo (Cmd+Z)" },
+        ["<D-Z>"] = { function() vim.cmd "redo" end, desc = "Redo (Cmd+Shift+Z)" },
+
+        ["<D-Left>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<C-D-h>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<D-Right>"] = { "<End>", desc = "Go to end of line" },
+        ["<C-D-l>"] = { "<End>", desc = "Go to end of line" },
+
+        ["gb"] = { "<C-o>", desc = "Jump Back" },
+        ["gt"] = { "<C-i>", desc = "Jump Forward" },
+
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-        --
-        -- ["d"] = { '"_d', desc = "Delete without yank" },
-        -- ["z"] = { "d", desc = "Yank and delete" },
-        -- ["zz"] = { "dd", desc = "Cut line" },
-        -- ["<C-r>"] = { "<C-r>", desc = "Redo" },
-        -- ["<Space>"] = { "<Cmd>WhichKey '<Space>'<CR>", desc = "Which-key (space)" },
-        --
-        -- mappings seen under group name "Buffer"
-        ["<Leader>bd"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Close buffer from tabline",
-        },
 
-        -- tables with just a `desc` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        -- ["<Leader>b"] = { desc = "Buffers" },
-
-        -- setting a mapping to false will disable it
-        -- ["<C-S>"] = false,
+        ["<Leader>bb"] = { "<cmd>BufferPick<CR>", desc = "Pick buffer (barbar)" },
+        ["<Leader>bd"] = { "<cmd>BufferClose<CR>", desc = "Close buffer (barbar)" },
+        ["<Leader>]"] = { "<cmd>BufferNext<CR>", desc = "Next buffer (barbar)" },
+        ["<Leader>["] = { "<cmd>BufferPrevious<CR>", desc = "Previous buffer (barbar)" },
+        ["<Leader>{"] = { "<cmd>BufferGoto 1<CR>", desc = "First buffer (barbar)" },
+        ["<Leader>}"] = { "<cmd>BufferLast<CR>", desc = "Last buffer (barbar)" },
+        ["<Leader>1"] = { "<cmd>BufferGoto 1<CR>", desc = "Buffer 1" },
+        ["<Leader>2"] = { "<cmd>BufferGoto 2<CR>", desc = "Buffer 2" },
+        ["<Leader>3"] = { "<cmd>BufferGoto 3<CR>", desc = "Buffer 3" },
+        ["<Leader>4"] = { "<cmd>BufferGoto 4<CR>", desc = "Buffer 4" },
+        ["<Leader>5"] = { "<cmd>BufferGoto 5<CR>", desc = "Buffer 5" },
+        ["<Leader>6"] = { "<cmd>BufferGoto 6<CR>", desc = "Buffer 6" },
+        ["<Leader>7"] = { "<cmd>BufferGoto 7<CR>", desc = "Buffer 7" },
+        ["<Leader>8"] = { "<cmd>BufferGoto 8<CR>", desc = "Buffer 8" },
+        ["<Leader>9"] = { "<cmd>BufferGoto 9<CR>", desc = "Buffer 9" },
       },
-      -- v = {
-      --   ["d"] = { '"_d', "Delete without yank" },
-      --   ["z"] = { "d", "Yank and delete" },
-      --   [">"] = { ">gv", "Indent right (preserve selection)" },
-      --   ["<"] = { "<gv", "Indent left (preserve selection)" },
-      -- },
-      -- i = {
-      --   ["<D-z>"] = {
-      --     function() vim.cmd "undo" end,
-      --     "Undo (Cmd+Z)",
-      --   },
-      --   ["<D-Z>"] = {
-      --     function() vim.cmd "redo" end,
-      --     "Redo (Cmd+Shift+Z)",
-      --   },
-      -- },
+
+      -- INSERT MODE ---
+      i = {
+        ["<D-z>"] = { function() vim.cmd "undo" end, desc = "Undo (Cmd+Z)" },
+        ["<D-Z>"] = { function() vim.cmd "redo" end, desc = "Redo (Cmd+Shift+Z)" },
+        ["<D-Left>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<C-D-h>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<D-Right>"] = { "<End>", desc = "Go to end of line" },
+        ["<C-D-l>"] = { "<End>", desc = "Go to end of line" },
+
+        -- Supermaven
+        ["<D-x>"] = {
+          function()
+            local suggestion = require "supermaven-nvim.completion_preview"
+            if suggestion and suggestion.has_suggestion and suggestion.on_clear_suggestion then
+              suggestion.on_clear_suggestion()
+            end
+          end,
+          desc = "Supermaven: reject suggestion",
+        },
+      },
+
+      --- VISUAL MODE ---
+      v = {
+        ["d"] = { '"_d', desc = "Delete without yanking" },
+        ["z"] = { "d", desc = "Yank and delete" },
+        ["v"] = { '"_dP', desc = "Paste over selection without changing buffer" },
+        [">"] = { ">gv", desc = "Indent right and keep selection" },
+        ["<"] = { "<gv", desc = "Indent left and keep selection" },
+        ["<D-Left>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<C-D-h>"] = { "<Home>", desc = "Go to beginning of line" },
+        ["<D-Right>"] = { "<End>", desc = "Go to end of line" },
+        ["<C-D-l>"] = { "<End>", desc = "Go to end of line" },
+      },
+
+      --- TERMINAL MODE ---
+      t = {
+        ["<Esc>"] = { "<C-\\><C-n>", desc = "Exit terminal mode" },
+      },
     },
+
     polish = function()
       local groups = {
         "Normal",
