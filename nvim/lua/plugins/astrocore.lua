@@ -18,6 +18,17 @@ return {
     diagnostics = {
       virtual_text = true,
       underline = true,
+      update_in_insert = false,
+      float = {
+        focused = false,
+        style = "minimal",
+        border = "rounded",
+        source = true,
+        header = "",
+        prefix = "",
+        max_width = 0.5,
+        wrap = true,
+      },
     },
     filetypes = {
       extension = { foo = "fooscript" },
@@ -35,6 +46,7 @@ return {
         signcolumn = "yes",
         wrap = true,
         linebreak = true,
+        breakindent = true,
         showbreak = "",
         cursorline = false,
         showtabline = 2,
@@ -42,6 +54,7 @@ return {
         conceallevel = 2,
       },
       g = {
+        max_width = 0.5,
         ai_accept = function()
           local suggestion = require "supermaven-nvim.completion_preview"
           if suggestion.has_suggestion() then

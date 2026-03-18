@@ -38,19 +38,22 @@ alias latexpand="perl ~/latexpand/latexpand"
 
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export CONDA_VER="miniconda3"
-# export CONDA_VER="miniconda-x86"
+# export CONDA_VER="miniconda3"
+export CONDA_VER="miniconda-x86"
+
+alias conda-arm='source /Users/jungdongwook/miniconda3/bin/activate'
+alias conda-x86='source /Users/jungdongwook/miniconda-x86/bin/activate'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jungdongwook/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/jungdongwook/$CONDA_VER/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/jungdongwook/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/jungdongwook/miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/Users/jungdongwook/$CONDA_VER/etc/profile.d/conda.sh" ]; then
+        . "/Users/jungdongwook/$CONDA_VER/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/jungdongwook/miniforge3/bin:$PATH"
+        export PATH="/Users/jungdongwook/$CONDA_VER/bin:$PATH"
     fi
 fi
 unset __conda_setup
