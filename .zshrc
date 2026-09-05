@@ -38,8 +38,8 @@ alias latexpand="perl ~/latexpand/latexpand"
 
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# export CONDA_VER="miniconda3"
-export CONDA_VER="miniconda-x86"
+export CONDA_VER="miniconda3"
+# export CONDA_VER="miniconda-x86"
 
 alias conda-arm='source /Users/jungdongwook/miniconda3/bin/activate'
 alias conda-x86='source /Users/jungdongwook/miniconda-x86/bin/activate'
@@ -83,3 +83,15 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH="$HOME/.local/bin:$PATH"
+
+alias run-python='docker run --rm --entrypoint /bin/bash -v $(pwd):/workspace -w /workspace mlcc_calib:latest -c'
+
+# ---------------------------------------------OLLAMA---------------------------------------------
+
+export OLLAMA_NUM_GPU=50
+export OLLAMA_MAX_LOADED_MODELS=1
+export OLLAMA_KEEP_ALIVE=5m
+
+export PATH=$PATH:/Users/jungdongwook/.spicetify
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"

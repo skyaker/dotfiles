@@ -21,6 +21,8 @@ return {
         "debugpy",
         "pyright",
 
+        "groovy-language-server",
+
         "tree-sitter-cli",
       },
     },

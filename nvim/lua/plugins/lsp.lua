@@ -6,6 +6,7 @@ return {
         "pyright",
         "cssls",
         "gopls",
+        "groovyls",
       },
     },
   },

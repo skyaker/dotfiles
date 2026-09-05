@@ -380,25 +380,25 @@ end
 
 -- ------------------------------------------------------------APP NAVIGATION------------------------------------------------------------
 
-hs.hotkey.bind({ "ctrl" }, "T", function()
-	hs.application.launchOrFocus("Telegram")
-end)
+-- hs.hotkey.bind({ "ctrl" }, "T", function()
+-- 	hs.application.launchOrFocus("Telegram")
+-- end)
 
 function launch(appName)
 	hs.application.launchOrFocus(appName)
 end
 
 hs.hotkey.bind({ "ctrl" }, "M", function()
-	launch("ym")
+	launch("Spotify")
 end)
 
 hs.hotkey.bind({ "ctrl" }, "K", function()
 	launch("kitty")
 end)
 
-hs.hotkey.bind({ "ctrl" }, "V", function()
-	launch("nekoray_arm64")
-end)
+-- hs.hotkey.bind({ "ctrl" }, "V", function()
+-- 	launch("Throne")
+-- end)
 
 hs.hotkey.bind({ "ctrl" }, "F", function()
 	-- launch("Firefox")

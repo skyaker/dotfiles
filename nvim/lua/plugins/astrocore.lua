@@ -40,7 +40,7 @@ return {
     },
     options = {
       opt = {
-        relativenumber = false,
+        relativenumber = true,
         number = true,
         spell = false,
         signcolumn = "yes",
@@ -142,6 +142,8 @@ return {
         ["<C-D-h>"] = { "<Home>", desc = "Go to beginning of line" },
         ["<D-Right>"] = { "<End>", desc = "Go to end of line" },
         ["<C-D-l>"] = { "<End>", desc = "Go to end of line" },
+        ["<S-j>"] = { "<S-e>", desc = "Скролл вниз без движения курсора" },
+        ["<S-k>"] = { "<S-y>", desc = "Скролл вверх без движения курсора" },
       },
 
       --- TERMINAL MODE ---

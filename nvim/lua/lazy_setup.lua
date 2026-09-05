@@ -12,6 +12,11 @@ require("lazy").setup({
     },
   },
 
+  rocks = {
+    enabled = true,
+    hererocks = true,
+  },
+
   { import = "community" },
   { import = "plugins" },
   { import = "config" },
@@ -21,6 +26,7 @@ require("lazy").setup({
     rtp = {
       -- disable some rtp plugins, add more to your liking
       disabled_plugins = {
+        "neo-tree",
         "gzip",
         "netrwPlugin",
         "tarPlugin",
